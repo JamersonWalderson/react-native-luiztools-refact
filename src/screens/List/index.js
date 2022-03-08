@@ -17,7 +17,7 @@ export default function List({ route, navigation }) {
   ]);
 
     useEffect(() => {
-        console.log("Tela lista");
+        // console.log("Tela lista");
 
     }, [route])
 

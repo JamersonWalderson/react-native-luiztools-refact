@@ -16,7 +16,7 @@ export default function AppItem({ id, item, quantity }) {
 const styles = StyleSheet.create({
   item: {
     flexDirection: 'row',
-    justifyContent: 'space-evenly',
+    justifyContent: 'space-around',
     marginBottom: 5,
   },
   quantity: {

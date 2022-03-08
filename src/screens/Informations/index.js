@@ -7,7 +7,6 @@ import { InformationContext } from '../../context/InformationContext';
 export default function Information() {
 
     const { developer } = useContext(InformationContext);
-    console.warn(developer);
 
     return (
         <View style={styles.container}>
