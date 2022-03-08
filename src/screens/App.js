@@ -1,10 +1,13 @@
 import React from "react";
 import { Text } from "react-native";
 import Navigation from '../navigation/index';
+import { InformationProvider } from '../context/InformationContext';
 
 const App = () => {
     return (
-        <Navigation />
+        <InformationProvider>
+            <Navigation />
+        </InformationProvider>
     );
 }
 

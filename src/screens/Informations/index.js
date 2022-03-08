@@ -1,14 +1,20 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { StatusBar, StyleSheet, Text, TextInput, TouchableOpacity } from 'react-native';
 import { View } from 'react-native';
 
-export default function List() {
+import { InformationContext } from '../../context/InformationContext';
+
+export default function Information() {
+
+    const { developer } = useContext(InformationContext);
+    console.warn(developer);
+
     return (
         <View style={styles.container}>
             <StatusBar barStyle='light-content'/>
             <Text style={styles.title}>Informações de contato</Text>
             <View style={styles.inputContainer}>
-                
+                <Text>Desenvolvido por { developer.name }</Text>
             </View>
             
         </View>

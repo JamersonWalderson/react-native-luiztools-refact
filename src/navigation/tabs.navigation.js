@@ -5,6 +5,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import List from '../screens/List';
 import Form from '../screens/Form';
 import Information from '../screens/Informations';
+import { StyleSheet } from "react-native";
 
 const Tab = createBottomTabNavigator();
 
@@ -26,10 +27,24 @@ export default function AppTab(){
     };
 
     return (
-        <Tab.Navigator screenOptions={screenOptions}>
+        <Tab.Navigator 
+            screenOptions={screenOptions}
+            keyboardHidesNavigationBar
+            barStyle={styles.barStyle}
+            // activeColor={colors.green}
+            // inactiveColor={colors.lightGray}
+        >
             <Tab.Screen name="List" component={List} options={{tabBarLabel: 'Compras'}} />
             <Tab.Screen name="Form" component={Form} options={{tabBarLabel: 'Adicionar'}} />
             <Tab.Screen name="Information" component={Information} options={{tabBarLabel: 'Informações'}} />
         </Tab.Navigator>
     )
 }
+
+const styles = StyleSheet.create({
+    barStyle: {
+        height: 64,
+        backgroundColor: '#32264d',
+    }
+
+});

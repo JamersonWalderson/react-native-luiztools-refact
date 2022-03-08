@@ -16,7 +16,7 @@ export default function Form() {
     
     }
     function handleButtonPress() {
-        console.log({id: newDate('2022-01-25').getTime(), description, quantity});
+        // console.log({id: newDate('2022-01-25').getTime(), description, quantity});
         Navigation.navigate('AppList');
 
     }

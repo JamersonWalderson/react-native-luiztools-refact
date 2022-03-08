@@ -1,21 +1,37 @@
 import React, { useEffect, useState } from "react";
 import { ScrollView, StatusBar, StyleSheet, Text, View } from "react-native";
+import AppItem from "../../components/AppItem";
 
 export default function List({ route, navigation }) {
-    const [items, setItems] = useState([]);
+    const [items, setItems] = useState([
+    {
+      'id': 1,
+      'quantity': 2,
+      'description': 'alguma coisa!',
+    },
+    {
+      'id': 2,
+      'quantity': 1,
+      'description': 'alguma coisa!!',
+    },
+  ]);
 
     useEffect(() => {
-        console.warn("Tela lista")
+        console.log("Tela lista");
 
     }, [route])
 
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Lista de Compras</Text>
+            <View style={styles.header}>
+              <Text style={styles.title}>Unidades</Text>
+              <Text style={styles.title}>Item</Text>
+            </View>
             <ScrollView style={styles.scrollContainer} contentContainerStyle={styles.itemsContainer}>
                 {
                     items.map((item) => {
-                        return <AppItem key={item.id} id={item.id} item={item.quantity + '  de ' + item.description} />
+                        return <AppItem key={item.id} id={item.id} quantity={item.quantity} item={item.description} />
                     })
                 }
             </ScrollView>
@@ -31,6 +47,11 @@ const styles = StyleSheet.create({
       backgroundColor: '#D93600',
       alignItems: 'center',
       justifyContent: 'center'
+    },
+    header: {
+      flexDirection: 'row',
+      justifyContent: 'space-evenly',
+      width: '100%'
     },
     title: {
       color: '#fff',
