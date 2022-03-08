@@ -2,7 +2,7 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import AppTab from '../navigation/tabs.navigation';
+import AppTab from './tabs.navigation';
 
 export default function App(){
 

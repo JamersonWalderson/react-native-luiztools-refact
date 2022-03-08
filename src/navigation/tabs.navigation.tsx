@@ -7,7 +7,15 @@ import Form from '../screens/Form';
 import Information from '../screens/Informations';
 import { StyleSheet } from "react-native";
 
-const Tab = createBottomTabNavigator();
+
+type ParamListBase = {
+    List: undefined;
+    Form: undefined;
+    Information: undefined;
+
+}
+
+const Tab = createBottomTabNavigator<ParamListBase>();
 
 export default function AppTab(){
     const screenOptions= {
@@ -28,6 +36,7 @@ export default function AppTab(){
 
     return (
         <Tab.Navigator 
+            initialRouteName='List'
             screenOptions={screenOptions}
             keyboardHidesNavigationBar
             barStyle={styles.barStyle}

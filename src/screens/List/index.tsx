@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { ScrollView, StatusBar, StyleSheet, Text, View } from "react-native";
 import AppItem from "../../components/AppItem";
 
-export default function List({ route, navigation }) {
+export default function List({ route, navigation }: any) {
     const [items, setItems] = useState([
     {
       'id': 1,

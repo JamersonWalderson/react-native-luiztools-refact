@@ -1,47 +1,21 @@
-import { NavigationContainer } from '@react-navigation/native';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { StatusBar, StyleSheet, Text, TextInput, TouchableOpacity } from 'react-native';
 import { View } from 'react-native';
 
-export default function Form() {
-    const [description, setDescription] = useState('');
-    const [quantity, setQuantity] = useState('');
+import { InformationContext } from '../../context/InformationContext';
 
-    function handleDescriptionChange(description) {
-        setDescription(description);
-    
-    }
-    function handleQuantityChange(quantity) {
-        setQuantity(quantity);
-    
-    }
-    function handleButtonPress() {
-        // console.log({id: newDate('2022-01-25').getTime(), description, quantity});
-        Navigation.navigate('AppList');
+export default function Information() {
 
-    }
+    const { developerInformation } = useContext(InformationContext);
 
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Item para compra</Text>
-            <View style={styles.inputContainer}>
-                <TextInput
-                    onChangeText={handleDescriptionChange} 
-                    style={styles.input}
-                    placeholder='O que está faltando em casa?'
-                />
-
-                <TextInput
-                    onChangeText={handleQuantityChange}
-                    style={styles.input}
-                    placeholder='Digite a quantidade'
-                    keyboardType='numeric'
-                />
-                <TouchableOpacity style={styles.button} onPress={handleButtonPress}>
-                    <Text style={styles.buttonText}>Salvar</Text>
-                </TouchableOpacity>
-            </View>
             <StatusBar barStyle='light-content'/>
+            <Text style={styles.title}>Informações de contato</Text>
+            <View style={styles.inputContainer}>
+                <Text>Desenvolvido por { developerInformation.name }</Text>
+            </View>
+            
         </View>
         
     );

@@ -1,7 +1,13 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function AppItem({ id, item, quantity }) {
+interface AppItemData {
+  id: number,
+  item: string,
+  quantity: number,
+}
+
+export default function AppItem({ id, item, quantity }: AppItemData) {
 
   return (
     <View key={ id } style={styles.item}>
