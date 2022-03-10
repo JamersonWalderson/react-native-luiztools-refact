@@ -9,8 +9,6 @@ interface developer {
     github: string;
 }
 
-
-
 export const InformationContext = createContext({} as InformationContext);
 
 export const InformationProvider = ({ children }: any) => {

@@ -1,44 +1,89 @@
-import React, { useEffect, useState } from "react";
-import { ScrollView, StatusBar, StyleSheet, Text, View } from "react-native";
+import React, { useContext, useEffect, useState } from "react";
+import { FlatList, ScrollView, StatusBar, StyleSheet, Text, View, VirtualizedList } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import AppItem from "../../components/AppItem";
+import { ProductContext } from '../../context/ProductContext';
+
+interface Props {
+  item: string,
+  quantity: number,
+}
 
 export default function List({ route, navigation }: any) {
-    const [items, setItems] = useState([
-    {
-      'id': 1,
-      'quantity': 2,
-      'description': 'alguma coisa!',
-    },
-    {
-      'id': 2,
-      'quantity': 1,
-      'description': 'alguma coisa!!',
-    },
-  ]);
+  const { product, setProduct } = useContext(ProductContext);
 
-    useEffect(() => {
-        // console.log("Tela lista");
-
-    }, [route])
-
+  const DATA = [{
+        'id': 1,
+        'quantity': 2,
+        'description': 'alguma coisa!',
+      },
+      {
+        'id': 2,
+        'quantity': 1,
+        'description': 'alguma coisa!!',
+      },
+      {
+        'id': 3,
+        'quantity': 1,
+        'description': 'alguma coisa!!',
+      },
+      {
+        'id': 4,
+        'quantity': 1,
+        'description': 'alguma coisa!!',
+      },
+      {
+        'id': 5,
+        'quantity': 1,
+        'description': 'alguma coisa!!',
+      },
+    ];
+  
+  const ItemComponent = ({ description, quantity}: any) => {
     return (
-        <View style={styles.container}>
-            <Text style={styles.title}>Lista de Compras</Text>
-            <View style={styles.header}>
-              <Text style={styles.title}>Unidades</Text>
-              <Text style={styles.title}>Item</Text>
-            </View>
-            <ScrollView style={styles.scrollContainer} contentContainerStyle={styles.itemsContainer}>
-                {
-                    items.map((item) => {
-                        return <AppItem key={item.id} id={item.id} quantity={item.quantity} item={item.description} />
-                    })
-                }
-            </ScrollView>
-            <StatusBar barStyle='light-content' />
-        </View>
-        
-    );
+      <View style={styles.item}>
+        <Text style={styles.quantity}>{ quantity }</Text>
+        <Text style={styles.description}>{ description }</Text>
+    </View>
+    )
+  }
+  console.log(product);
+
+    
+  useEffect(() => {
+
+  }, [route])
+
+  return (
+    <SafeAreaView style={{flex: 1}}>
+      <View style={styles.container}>
+          <Text style={styles.title}>Lista de Compras</Text>
+
+          <View style={styles.header}>
+            <Text style={styles.title}>Unidades</Text>
+            <Text style={styles.title}>Item</Text>
+          </View>
+
+          <ScrollView style={styles.scrollContainer} contentContainerStyle={styles.itemsContainer}>
+            <VirtualizedList
+              data={product}
+              renderItem={({ item }: any) => <ItemComponent quantity={item.quantity} description={item.description} />}
+              initialNumToRender={4}
+              getItemCount={() => product.length}
+              getItem={(item, index: number) => item[index]}
+              keyExtractor={(item, index) => index.toString()}
+            />
+            {/* <FlatList 
+              data={DATA}
+              renderItem={({ quantity, description }: any) => <ItemComponent description={description} />}
+            /> */}
+          </ScrollView>
+
+          <StatusBar barStyle='light-content' />
+      </View>
+    </SafeAreaView>
+      
+  );
 }
 
 const styles = StyleSheet.create({
@@ -74,4 +119,16 @@ const styles = StyleSheet.create({
       alignItems: 'stretch',
       backgroundColor: '#fff'
     },
+
+    item: {
+      flexDirection: 'row',
+      justifyContent: 'space-around',
+      marginBottom: 5,
+    },
+    quantity: {
+  
+    },
+    description: {
+      color: 'green',
+    }
   });
