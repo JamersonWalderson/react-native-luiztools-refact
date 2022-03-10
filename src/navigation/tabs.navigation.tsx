@@ -18,7 +18,7 @@ type ParamListBase = {
 const Tab = createBottomTabNavigator<ParamListBase>();
 
 export default function AppTab(){
-    const screenOptions= {
+    const screenOptions = {
         tabBarActiveTintColor: "#32264d",
         tabBarInactiveTintColor: "#c1bccc",
         tabBarActiveBackgroundColor: "#ebebf5",
@@ -37,6 +37,7 @@ export default function AppTab(){
     return (
         <Tab.Navigator 
             initialRouteName='List'
+            // @ts-ignore
             screenOptions={screenOptions}
             keyboardHidesNavigationBar
             barStyle={styles.barStyle}
