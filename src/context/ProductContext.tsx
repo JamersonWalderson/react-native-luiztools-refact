@@ -13,9 +13,7 @@ interface ProductModel {
 export const ProductContext = createContext({} as ProductContextInterface)
 
 export const ProductProvider = ({ children }: any) => {
-  // const [product, setProduct] = useState<ProductModel>({ quantity: '', descrition: '' });
   const [product, setProduct] = useState([]);
-  console.log(product);
   
   return (
     <ProductContext.Provider 

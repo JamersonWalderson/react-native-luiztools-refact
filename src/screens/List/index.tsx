@@ -11,33 +11,6 @@ interface Props {
 
 export default function List({ route, navigation }: any) {
   const { product, setProduct } = useContext(ProductContext);
-
-  const DATA = [{
-        'id': 1,
-        'quantity': 2,
-        'description': 'alguma coisa!',
-      },
-      {
-        'id': 2,
-        'quantity': 1,
-        'description': 'alguma coisa!!',
-      },
-      {
-        'id': 3,
-        'quantity': 1,
-        'description': 'alguma coisa!!',
-      },
-      {
-        'id': 4,
-        'quantity': 1,
-        'description': 'alguma coisa!!',
-      },
-      {
-        'id': 5,
-        'quantity': 1,
-        'description': 'alguma coisa!!',
-      },
-    ];
   
   const ItemComponent = ({ description, quantity}: any) => {
     return (
@@ -47,8 +20,6 @@ export default function List({ route, navigation }: any) {
     </View>
     )
   }
-  console.log(product);
-
     
   useEffect(() => {
 
@@ -73,10 +44,6 @@ export default function List({ route, navigation }: any) {
               getItem={(item, index: number) => item[index]}
               keyExtractor={(item, index) => index.toString()}
             />
-            {/* <FlatList 
-              data={DATA}
-              renderItem={({ quantity, description }: any) => <ItemComponent description={description} />}
-            /> */}
           </ScrollView>
 
           <StatusBar barStyle='light-content' />

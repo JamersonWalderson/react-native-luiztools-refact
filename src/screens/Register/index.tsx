@@ -1,48 +1,47 @@
-import React, { useState } from "react";
-import { Alert, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import React, { useState } from 'react';
+import { Alert, SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 interface RouteNavigation {
   navigation: NativeStackNavigationProp<any>
 }
 
-export default function Login({ navigation }: RouteNavigation) {
-  const [login, setLogin] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
+export default function Register({ navigation }: RouteNavigation) {
+  const [createLogin, setCreateLogin] = useState<string>('');
+  const [createPassword, setCreatePassword] = useState<string>('');
 
-  const handleAccessButton = () => {
-    Alert.alert('Atenção', 'Você está logado!');
+  const handleRegisterButton = () => {
+    navigation.navigate('Login');
   }
 
   const handleRegister = () => {
-    navigation.navigate('Register');
+    navigation.navigate('Login');
   }
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.title}>Entre com suas credênciais</Text>
+      <Text style={styles.title}>Registre</Text>
       <View style={styles.box}>
+        <TouchableOpacity onPress={handleRegister} style={styles.opacityButtonBox}>
+          <Text style={styles.opacityButton}>Já possui cadastro?</Text>
+        </TouchableOpacity>
       
         <TextInput 
-          value={login}
-          onChangeText={setLogin}
-          placeholder='Insira seu login'
+          value={createLogin}
+          onChangeText={setCreateLogin}
+          placeholder='Insira seu e-mail'
         />
 
         <TextInput 
-          value={password}
-          onChangeText={setPassword}
-          placeholder='Entre com sua senha'
+          value={createPassword}
+          onChangeText={setCreatePassword}
+          placeholder='Digite uma senha forte'
         />
 
-        <TouchableOpacity onPress={handleAccessButton} >
-          <Text style={styles.button}>Entrar</Text>
+        <TouchableOpacity onPress={handleRegisterButton} >
+          <Text style={styles.button}>Criar perfil</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={handleRegister} style={styles.opacityButtonBox}>
-          <Text style={styles.opacityButton}>Ainda não tem cadastro?</Text>
-        </TouchableOpacity>
 
       </View>
     </SafeAreaView>
@@ -86,4 +85,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row-reverse',
     marginTop: 12,
   }
+
 })

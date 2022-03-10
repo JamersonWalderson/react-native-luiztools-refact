@@ -35,8 +35,7 @@ export default function AppTab(){
     };
 
     return (
-        <Tab.Navigator 
-            initialRouteName='List'
+        <Tab.Navigator initialRouteName='List'
             // @ts-ignore
             screenOptions={screenOptions}
             keyboardHidesNavigationBar
