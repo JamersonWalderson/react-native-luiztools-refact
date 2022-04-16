@@ -4,6 +4,7 @@ import { StatusBar, StyleSheet, Text, TextInput, TouchableOpacity } from 'react-
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import { View } from 'react-native';
 import { ProductContext } from '../../context/ProductContext';
+import Button from '../../components/Button';
 
 interface RouteNavigation {
   navigation: NativeStackNavigationProp<any>
@@ -52,9 +53,7 @@ export default function Form({ navigation }: RouteNavigation) {
           style={styles.input}
           placeholder='Digite a quantidade'
         />
-        <TouchableOpacity style={styles.button} onPress={handleButtonPress}>
-          <Text style={styles.buttonText}>Salvar</Text>
-        </TouchableOpacity>
+       <Button label='Salvar' onPress={handleButtonPress}/>
       </View>
       <StatusBar barStyle='light-content'/>
     </View>
@@ -94,23 +93,6 @@ const styles = StyleSheet.create({
     alignItems: 'stretch'
 
       
-  },
-  button: {
-    marginTop: 10,
-    height: 60,
-    backgroundColor: 'blue',
-    borderRadius: 10,
-    paddingHorizontal: 24,
-    fontSize: 16,
-    alignItems: 'center',
-    justifyContent: 'center',
-    elevation: 20,
-    shadowOpacity: 20,
-    shadowColor: '#ccc',
-  },
-  buttonText: {
-    color: '#fff',
-    fontWeight: 'bold',
   },
 
 });
