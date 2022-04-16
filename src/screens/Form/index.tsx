@@ -5,6 +5,7 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import { View } from 'react-native';
 import { ProductContext } from '../../context/ProductContext';
 import Button from '../../components/Button';
+import Input from '../../components/Input';
 
 interface RouteNavigation {
   navigation: NativeStackNavigationProp<any>
@@ -39,18 +40,23 @@ export default function Form({ navigation }: RouteNavigation) {
     <View style={styles.container}>
       <Text style={styles.title}>Item para compra</Text>
       <View style={styles.inputContainer}>
-        <TextInput
+        {/* <TextInput
           value={description}
           onChangeText={handleDescriptionChange} 
           style={styles.input}
           placeholder='O que está faltando em casa?'
+        /> */}
+        <Input 
+          value={description}
+          placeholder='O que está faltando em casa?'
+          onChangeText={handleDescriptionChange}
+          error='Saporra'
         />
 
-        <TextInput
+        <Input
           value={quantity}
           keyboardType='numeric'
           onChangeText={handleQuantityChange}
-          style={styles.input}
           placeholder='Digite a quantidade'
         />
        <Button label='Salvar' onPress={handleButtonPress}/>
@@ -83,16 +89,4 @@ const styles = StyleSheet.create({
     alignItems: 'stretch',
     backgroundColor: '#fff'
   },
-  input: {
-    backgroundColor: '#fff',
-    marginTop: 10,
-    height: 60,
-    borderRadius: 10,
-    paddingHorizontal: 24,
-    fontSize: 16,
-    alignItems: 'stretch'
-
-      
-  },
-
 });
