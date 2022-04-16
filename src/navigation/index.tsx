@@ -8,6 +8,6 @@ export default function Router() {
   const { signature } = useContext(AuthContext);
 
   return (
-    signature ? <UnsignedRoutes />: <SignedRoutes />
+    signature ? <SignedRoutes /> : <UnsignedRoutes />
   );
 }

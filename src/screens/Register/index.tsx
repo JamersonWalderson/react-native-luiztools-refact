@@ -1,22 +1,32 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Alert, SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import { AuthContext } from '../../context/AuthContext';
 
 interface RouteNavigation {
   navigation: NativeStackNavigationProp<any>
 }
 
 export default function Register({ navigation }: RouteNavigation) {
+  const { handleNewAccount } = useContext(AuthContext);
+
   const [createLogin, setCreateLogin] = useState<string>('');
   const [createPassword, setCreatePassword] = useState<string>('');
 
   const handleRegisterButton = () => {
-    navigation.navigate('Login');
+    if(createLogin && createPassword) {
+      handleNewAccount(createLogin, createPassword);
+    }
+
+    // navigation.navigate('Login');
   }
 
   const handleRegister = () => {
     navigation.navigate('Login');
   }
+
+  
+
 
   return (
     <SafeAreaView style={styles.container}>
