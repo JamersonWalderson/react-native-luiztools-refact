@@ -1,15 +1,13 @@
 import React, { Fragment } from 'react';
-import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { ButtonProps, StyleSheet, Text, TouchableOpacity } from 'react-native';
 
 interface Props {
   label: string;
-  iconName?: string;
   onPress: any;
 }
 
 const Button = ({
   label,
-  iconName,
   onPress = () => {},
   ...props
 }: Props) =>{
