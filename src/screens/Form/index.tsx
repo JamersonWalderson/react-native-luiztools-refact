@@ -40,18 +40,18 @@ export default function Form({ navigation }: RouteNavigation) {
     <View style={styles.container}>
       <Text style={styles.title}>Item para compra</Text>
       <View style={styles.inputContainer}>
-        {/* <TextInput
+        <TextInput
           value={description}
           onChangeText={handleDescriptionChange} 
           style={styles.input}
           placeholder='O que está faltando em casa?'
-        /> */}
-        <Input 
+        />
+        {/* <Input 
           value={description}
           placeholder='O que está faltando em casa?'
           onChangeText={handleDescriptionChange}
-          error='Saporra'
-        />
+          error=''
+        /> */}
 
         <Input
           value={quantity}

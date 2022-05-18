@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Alert, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import { AuthContext } from "../../context/AuthContext";
 
 interface RouteNavigation {
   navigation: NativeStackNavigationProp<any>
@@ -10,9 +11,12 @@ interface RouteNavigation {
 export default function Login({ navigation }: RouteNavigation) {
   const [login, setLogin] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  const { signature, setSignature } = useContext(AuthContext);
 
   const handleAccessButton = () => {
-    Alert.alert('Atenção', 'Você está logado!');
+    // Alert.alert('Atenção', 'Você está logado!');
+    setSignature(true);
+
   }
 
   const handleRegister = () => {
