@@ -31,7 +31,8 @@ export default function AppTab(){
             left: 0,
             right: 0
         },
-        tabBarIconStyle: { display: "none" }
+        tabBarIconStyle: { display: "none" },
+        headerShown: false,
     };
 
     return (

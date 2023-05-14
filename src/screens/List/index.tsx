@@ -27,6 +27,7 @@ export default function List({ route, navigation }: any) {
 
   return (
     <SafeAreaView style={{flex: 1}}>
+      <StatusBar barStyle='light-content' />
       <View style={styles.container}>
           <Text style={styles.title}>Lista de Compras</Text>
 
@@ -35,7 +36,7 @@ export default function List({ route, navigation }: any) {
             <Text style={styles.title}>Item</Text>
           </View>
 
-          <ScrollView style={styles.scrollContainer} contentContainerStyle={styles.itemsContainer}>
+          <View style={styles.scrollContainer}>
             <VirtualizedList
               data={product}
               renderItem={({ item }: any) => <ItemComponent quantity={item.quantity} description={item.description} />}
@@ -44,9 +45,9 @@ export default function List({ route, navigation }: any) {
               getItem={(item, index: number) => item[index]}
               keyExtractor={(item, index) => index.toString()}
             />
-          </ScrollView>
+          </View>
 
-          <StatusBar barStyle='light-content' />
+          
       </View>
     </SafeAreaView>
       
@@ -74,9 +75,7 @@ const styles = StyleSheet.create({
     },
     scrollContainer: {
       flex: 1,
-      width: '90%'
-    },
-    itemsContainer: {
+      width: '90%',
       marginTop: 10,
       padding: 20,
       borderTopLeftRadius: 10,

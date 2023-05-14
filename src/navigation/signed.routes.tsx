@@ -9,8 +9,15 @@ export default function SignedRoutes() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen name='AppTab' component={AppTab} />
+      <Stack.Navigator
+        screenOptions={{ headerShown: false }}>
+        <Stack.Screen
+          name='AppTab'
+          component={AppTab}
+          options={{
+
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
